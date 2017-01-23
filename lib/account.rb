@@ -2,6 +2,7 @@
 
 require './lib/transaction'
 
+
 class Account
   attr_reader :balance, :transactions
   def initialize
@@ -10,12 +11,11 @@ class Account
   end
 
   def add_entry(transaction, amount)
-    transaction_validation(transaction)
-    update_balance(transaction, amount)
-    entry = Transaction.new({transation: amount})
-    new_entry = [entry.date, entry.credit, entry.debit, @balance]
-    @transactions.unshift(new_entry)
+    create_entry(transaction, amount)
+    @transactions.unshift(@new_entry)
   end
+
+
 
   private
 
@@ -31,5 +31,15 @@ class Account
     if ! [:withdrawal, :deposit].include?(transaction)
       raise "This is not a correct transaction. Try again"
     end
+  end
+
+  def create_entry(transaction, amount)
+    transaction_validation(transaction)
+    update_balance(transaction, amount)
+
+    hash = {}
+    hash[transaction] = amount
+    entry = Transaction.new(hash)
+    @new_entry = [entry.date, entry.deposit, entry.withdrawal, @balance]
   end
 end

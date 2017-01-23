@@ -33,5 +33,12 @@ describe Account do
 
   end
 
+  context "the entries are listed in transactions" do
+    it "has an array of transactions" do
+      account.add_entry( :deposit, 100)
+      account.add_entry( :withdrawal, 100)
+      expect(account.transactions).to eq [["01/23/2017", nil, 100, 0], ["01/23/2017", 100, nil, 100]]
+    end
+  end
 
 end
