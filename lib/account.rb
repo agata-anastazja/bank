@@ -10,6 +10,7 @@ class Account
   end
 
   def add_entry(transaction, amount)
+    transaction_validation(transaction)
     update_balance(transaction, amount)
     entry = Transaction.new({transation: amount})
     new_entry = [entry.date, entry.credit, entry.debit, @balance]
@@ -19,6 +20,16 @@ class Account
   private
 
   def update_balance(transaction, amount)
-    transaction == :credit ? @balance += amount : @balance -= amount
+    if transaction == :deposit
+       @balance += amount
+    else transaction == :withdrawal
+      @balance -= amount
+    end
+  end
+
+  def transaction_validation(transaction)
+    if ! [:withdrawal, :deposit].include?(transaction)
+      raise "This is not a correct transaction. Try again"
+    end
   end
 end

@@ -3,8 +3,8 @@ class Transaction
 attr_reader :date, :credit, :debit
   def initialize(args = {})
     @date = Date.today.strftime('%m/%d/%Y')
-    @credit = args[:credit] || default_credit
-    @debit = args[:debit] || default_debit
+    @credit = args[:deposit] || default_credit
+    @debit = args[:withdrawal] || default_debit
   end
 
   private
