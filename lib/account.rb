@@ -15,7 +15,12 @@ class Account
     @transactions.unshift(@new_entry)
   end
 
-
+  def display_statement
+    args = {}
+    args[:transactions] = @transactions
+    statement = Statement.new(args)
+    statement.print_out
+  end
 
   private
 

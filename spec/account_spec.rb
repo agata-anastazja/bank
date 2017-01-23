@@ -1,5 +1,6 @@
 require 'account'
 require 'transaction'
+require 'statement'
 
 describe Account do
 
@@ -41,6 +42,12 @@ describe Account do
     end
   end
 
-  
+  it "displays the statement" do
+    account.add_entry( :deposit, 100)
+    account.add_entry( :withdrawal, 100)
+    expect(account.display_statement).to eq "date       || credit || debit   || balance \n" +
+                                      "01/23/2017 ||        || 100     || 0 \n" +
+                                      "01/23/2017 || 100    ||         || 100 \n"
+  end
 
 end

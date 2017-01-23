@@ -18,8 +18,5 @@ describe Statement do
     expect(statement.print_out).to eq "date       || credit || debit   || balance \n" +
                                       "01/23/2017 ||        || 100     || 0 \n" +
                                       "01/23/2017 || 100    ||         || 100 \n"
-
-
-
   end
 end
