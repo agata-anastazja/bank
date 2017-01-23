@@ -7,10 +7,12 @@ describe Transaction do
     expect(transaction.date).to eq Date.today.strftime('%m/%d/%Y')
   end
 
-  it "has credit of null by default" do
+  it "has credit of nil by default" do
     expect(transaction.credit).to eq nil
   end
 
-
+  it "has debit of nil by default" do
+    expect(transaction.debit).to eq nil
+  end
 
 end
