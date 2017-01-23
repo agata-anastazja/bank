@@ -14,9 +14,9 @@ describe Account do
     expect(account.transactions).to eq []
   end
 
-  # it "can change the balance with add entry method" do
-  #   account.add_entry("credit", 100)
-  #   expect(account.balance).to eq 100
-  # end
+  it "can change the balance with add entry method" do
+    account.add_entry( :credit, 100)
+    expect(account.balance).to eq 100
+  end
 
 end
