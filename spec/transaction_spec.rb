@@ -16,7 +16,6 @@ describe Transaction do
   end
 
   it "can set up a debit transaction" do
-    # binding.pry
     expect(withdrawal_transaction.withdrawal).to eq 100
   end
 

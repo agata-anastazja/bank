@@ -1,7 +1,7 @@
 #stores information about account
 
 require './lib/transaction'
-
+require './lib/statement'
 
 class Account
   attr_reader :balance, :transactions
